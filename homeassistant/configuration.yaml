@@ -1,0 +1,63 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+
+mqtt:
+  light:
+    - name: "Smart Light"
+      unique_id: "smart_light_01"
+      command_topic: "home/light/cmd"
+      state_topic: "home/light/status"
+
+  lock:
+    - name: "Smart Door Lock"
+      unique_id: "smart_door_lock_01"
+      command_topic: "home/door/cmd"
+      state_topic: "home/door/status"
+      payload_lock: "LOCK"
+      payload_unlock: "UNLOCK"
+      state_locked: "LOCKED"
+      state_unlocked: "UNLOCKED"
+
+  sensor:
+    - name: "Temperature Sensor"
+      unique_id: "temp_sensor_01"
+      state_topic: "home/temperature/value"
+      unit_of_measurement: "°C"
+
+    - name: "Motion Sensor"
+      unique_id: "motion_sensor_01"
+      state_topic: "home/motion/status"
+
+    - name: "Grid Power"
+      unique_id: "grid_power_01"
+      state_topic: "home/energy/power"
+      unit_of_measurement: "W"
+      device_class: "power"
+      state_class: "measurement"
+
+    - name: "Grid Energy"
+      unique_id: "grid_energy_01"
+      state_topic: "home/energy/total"
+      unit_of_measurement: "kWh"
+      device_class: "energy"
+      state_class: "total_increasing"
+
+  switch:
+    - name: "Main Power Switch"
+      unique_id: "main_power_switch_01"
+      command_topic: "home/energy/main/cmd"
+      state_topic: "home/energy/main/status"
+      payload_on: "ON"
+      payload_off: "OFF"
+      state_on: "ON"
+      state_off: "OFF"
+      optimistic: false

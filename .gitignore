@@ -1,0 +1,11 @@
+homeassistant/.storage/
+homeassistant/.cache/
+homeassistant/.ha_run.lock
+homeassistant/*.db
+homeassistant/*.db-shm
+homeassistant/*.db-wal
+homeassistant/home-assistant.log*
+homeassistant/tts/
+mosquitto/data/
+mosquitto/log/
+nodered/node_modules/
